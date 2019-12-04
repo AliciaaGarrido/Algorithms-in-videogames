@@ -12,3 +12,22 @@ test_players = pd.read_csv('/Users/502944285qq.com/Desktop/SMAA project/dota-2-m
 
 train_labels = matches['radiant_win'].astype(int)
 print(matches.head())
+
+def make_samples():
+  train_x = []
+  train_y = []
+  test_x = []
+  test_y = []
+  validate_x = []
+  validate_y = []
+  for i in range(len(sample_in)):
+    if i%10==8:
+      test_x.append(sample_in[i])
+      test_y.append(sample_out[i])
+    elif i%10==9:
+      validate_x.append(sample_in[i])
+      validate_y.append(sample_out[i])
+    else:
+      train_x.append(sample_in[i])
+      train_y.append(sample_out[i])
+    return train_x,train_y,test_x,test_y,validate_x,validate_y
