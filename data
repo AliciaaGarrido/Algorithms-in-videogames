@@ -1,0 +1,14 @@
+import pandas as pd
+import numpy as np
+from sklearn import ensemble
+from sklearn import metrics
+
+# this is meant to be a simple example so only matches and players are used
+matches = pd.read_csv('/Users/502944285qq.com/Desktop/SMAA project/dota-2-matches/match.csv', index_col=0)
+players = pd.read_csv('/Users/502944285qq.com/Desktop/SMAA project/dota-2-matches/players.csv')
+
+test_labels = pd.read_csv('/Users/502944285qq.com/Desktop/SMAA project/dota-2-matches/test_labels.csv', index_col=0)
+test_players = pd.read_csv('/Users/502944285qq.com/Desktop/SMAA project/dota-2-matches/test_player.csv')
+
+train_labels = matches['radiant_win'].astype(int)
+print(matches.head())
