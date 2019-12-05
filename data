@@ -13,6 +13,29 @@ test_players = pd.read_csv('/Users/502944285qq.com/Desktop/SMAA project/dota-2-m
 train_labels = matches['radiant_win'].astype(int)
 print(matches.head())
 
+with open('/Users/502944285qq.com/Desktop/SMAA project/dota-2-matches/match.csv','r',encoding='utf-8') as fo_1:
+  line_matches = fo_1.readlines()
+  sample_in = []
+  sample_out = []
+  for i in range(len(line_matches))[1:]:
+      split = line_matches[i].split(', ')
+      radiant = split[2]
+      dire = split[3]
+      # print(split[4][:-1])
+   if split[4][:-1]=='True':
+         win = 1.0
+       else:
+           win = 0.0
+       radiant = list(map(int,radiant.split(',')))
+       dire = list(map(int,dire.split(',')))
+        radiant_vector = np.zeros(hero_id_max)
+       dire_vector = np.zeros(hero_id_max)
+       for item in radiant:
+          radiant_vector[item-1] = 1
+       for item in dire:
+      sample_in.append([radiant_vector,dire_vector])
+      sample_out.append(win)
+
 def make_samples():
   train_x = []
   train_y = []
