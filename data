@@ -18,16 +18,12 @@ def make_samples():
   train_y = []
   test_x = []
   test_y = []
-  validate_x = []
-  validate_y = []
+ 
   for i in range(len(sample_in)):
-    if i%10==8:
+    if i%10==4:
       test_x.append(sample_in[i])
       test_y.append(sample_out[i])
-    elif i%10==9:
-      validate_x.append(sample_in[i])
-      validate_y.append(sample_out[i])
     else:
       train_x.append(sample_in[i])
       train_y.append(sample_out[i])
-    return train_x,train_y,test_x,test_y,validate_x,validate_y
+    return train_x,train_y,test_x,test_y
